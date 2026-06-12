@@ -20,7 +20,10 @@ public class ExpenseService {
 
     public boolean createExpense(ExpenseDto expenseDto){
         try{
-            expenseRepository.save(objectMapper.convertValue(expenseDto , Expense.class));
+            System.out.println("Service DTO UserId = " + expenseDto.getUserId());
+            Expense expense = objectMapper.convertValue(expenseDto, Expense.class);
+            System.out.println("Entity UserId = " + expense.getUserId());
+            expenseRepository.save(expense);
             return true;
         }
         catch(Exception e){

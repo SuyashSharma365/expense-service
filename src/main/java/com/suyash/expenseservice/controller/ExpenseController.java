@@ -33,7 +33,7 @@ public class ExpenseController {
     }
     @PostMapping("/addExpense")
     public ResponseEntity<Boolean>addExpense(@RequestHeader("X-User-Id") @NonNull String userId ,@RequestBody ExpenseDto newExpenseDto){
-        try{
+        try{;
             newExpenseDto.setUserId(userId);
             Boolean result = expenseService.createExpense(newExpenseDto);
             return new ResponseEntity<>(result , HttpStatus.OK);
